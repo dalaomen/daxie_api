@@ -10,33 +10,37 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
 import java.util.List;
 import java.util.Properties;
 
 /**
-* Created by CodeGenerator on 2019/01/18.
+* Created by 代码生成器 on 2019/01/19.
 */
 @RestController
-@RequestMapping("/forum/user")
+@RequestMapping("/forumuser")
 public class ForumUserController {
     @Resource
     private ForumUserService forumUserService;
     @Autowired
     private JavaMailSender jms;
-
+    //注册 添加用户
     @PostMapping("/register")
     public Result register(ForumUser forumUser) {
         System.out.println(UUIDS.getDateUUID());
         System.out.println(UUIDS.getDateTime());
         forumUser.setUserid(UUIDS.getDateUUID());
         forumUser.setCreatedate(UUIDS.getDateTime());
+        forumUserService.save(forumUser);
+        return ResultGenerator.genSuccessResult(forumUser);
+    }
+    //获取验证码，返回前台
+    @PostMapping("/getCode")
+    public Result getCode(String email){
         int code= Code.getCode();
         MimeMessage mMessage=jms.createMimeMessage();//创建邮件对象
         MimeMessageHelper mMessageHelper;
@@ -48,37 +52,31 @@ public class ForumUserController {
             from = prop.get("mail.smtp.username")+"";
             mMessageHelper=new MimeMessageHelper(mMessage,true);
             mMessageHelper.setFrom(from);//发件人邮箱
-            mMessageHelper.setTo(forumUser.getEmail());//收件人邮箱
+            mMessageHelper.setTo(email);//收件人邮箱
             mMessageHelper.setSubject("用户验证码");//邮件的主题
             mMessageHelper.setText("<p style=\"font-size: 20px;font-weight: bold\">验证码为：" +code+"</p>",true);//邮件的文本内容，true表示文本以html格式打开
             jms.send(mMessage);//发送邮件
         } catch (Exception e) {
+            System.out.println(e);
             e.printStackTrace();
         }
-        forumUserService.save(forumUser);
         return ResultGenerator.genSuccessResult(code);
+    }
+    @PostMapping("/login")
+    public Result login(ForumUser forumUser) {
+        ForumUser f =forumUserService.findBy("username",forumUser.getUsername());
+        if (f==null){
+            return ResultGenerator.genFailResult("用户名不存在");
+        }else if(f.getPassword()==forumUser.getPassword() || f.getPassword().equals(forumUser.getPassword())){
+            f.setLastdate(UUIDS.getDateTime());
+            forumUserService.update(f);
+            return ResultGenerator.genSuccessResult(f);
+        }else{
+            return ResultGenerator.genFailResult("密码不正确");
+        }
     }
     @PostMapping("/add")
     public Result add(ForumUser forumUser) {
-        UUIDS.getDateUUID();
-        int code= Code.getCode();
-        MimeMessage mMessage=jms.createMimeMessage();//创建邮件对象
-        MimeMessageHelper mMessageHelper;
-        Properties prop = new Properties();
-        String from;
-        try{
-            //从配置文件中拿到发件人邮箱地址
-            prop.load(this.getClass().getResourceAsStream("/mail.properties"));
-            from = prop.get("mail.smtp.username")+"";
-            mMessageHelper=new MimeMessageHelper(mMessage,true);
-            mMessageHelper.setFrom(from);//发件人邮箱
-            mMessageHelper.setTo("1214895040@qq.com");//收件人邮箱
-            mMessageHelper.setSubject("用户验证码");//邮件的主题
-            mMessageHelper.setText("<p style=\"font-size: 20px;font-weight: bold\">验证码为：" +code+"</p>",true);//邮件的文本内容，true表示文本以html格式打开
-            jms.send(mMessage);//发送邮件
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         forumUserService.save(forumUser);
         return ResultGenerator.genSuccessResult();
     }

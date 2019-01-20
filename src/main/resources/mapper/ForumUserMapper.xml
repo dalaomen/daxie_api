@@ -6,7 +6,7 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
     <result column="userName" jdbcType="VARCHAR" property="username" />
     <result column="passWord" jdbcType="VARCHAR" property="password" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -17,5 +17,6 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="createDate" jdbcType="VARCHAR" property="createdate" />
     <result column="lastDate" jdbcType="VARCHAR" property="lastdate" />
+    <result column="isStat" jdbcType="INTEGER" property="isstat" />
   </resultMap>
 </mapper>

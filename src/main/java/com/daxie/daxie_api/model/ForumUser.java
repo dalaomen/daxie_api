@@ -36,6 +36,9 @@ public class ForumUser {
     @Column(name = "lastDate")
     private String lastdate;
 
+    @Column(name = "isStat")
+    private Integer isstat=0;//0 不可用  1 可用
+
     /**
      * @return id
      */
@@ -202,5 +205,19 @@ public class ForumUser {
      */
     public void setLastdate(String lastdate) {
         this.lastdate = lastdate;
+    }
+
+    /**
+     * @return isStat
+     */
+    public Integer getIsstat() {
+        return isstat;
+    }
+
+    /**
+     * @param isstat
+     */
+    public void setIsstat(Integer isstat) {
+        this.isstat = isstat;
     }
 }
