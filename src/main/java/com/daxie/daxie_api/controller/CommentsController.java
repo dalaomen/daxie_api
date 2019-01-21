@@ -16,28 +16,30 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by 代码生成器 on 2019/01/20.
+* Created by 代码生成器 on 2019/01/21.
 */
 @RestController
 @RequestMapping("/comments")
 public class CommentsController {
     @Resource
     private CommentsService commentsService;
-    //添加评论
+
     @PostMapping("/add")
     public Result add(Comments comments) {
         comments.setCreatetime(UUIDS.getDateTime());
         commentsService.save(comments);
         return ResultGenerator.genSuccessResult();
     }
+
     @PostMapping("/getCommentList")
     public Result getCommentList(String forid) {
-        System.out.println(forid);
-        Condition condition=new Condition(Comments.class);
+        Condition condition = new Condition(Comments.class);
         condition.createCriteria().andCondition("forid ="+forid);
+        condition.setOrderByClause("createtime desc");
         List<Comments> list=commentsService.findByCondition(condition);
         return ResultGenerator.genSuccessResult(list);
     }
+
     @PostMapping("/delete")
     public Result delete(@RequestParam Integer id) {
         commentsService.deleteById(id);

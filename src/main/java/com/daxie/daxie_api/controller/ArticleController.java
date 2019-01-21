@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by 代码生成器 on 2019/01/19.
+* Created by 代码生成器 on 2019/01/21.
 */
 @RestController
 @RequestMapping("/article")
@@ -25,9 +25,9 @@ public class ArticleController {
 
     @PostMapping("/add")
     public Result add(Article article) {
-        String articleid="wz"+UUIDS.getDateUUID();
-        article.setArticleid(articleid);
         article.setCreatetime(UUIDS.getDateTime());
+        article.setArticleid(UUIDS.getDateUUID());
+        System.out.println(article.getContent());
         articleService.save(article);
         return ResultGenerator.genSuccessResult();
     }
