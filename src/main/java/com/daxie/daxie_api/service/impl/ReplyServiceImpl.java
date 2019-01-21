@@ -1,8 +1,8 @@
 package com.daxie.daxie_api.service.impl;
 
-import com.daxie.daxie_api.dao.ArticleMapper;
-import com.daxie.daxie_api.model.Article;
-import com.daxie.daxie_api.service.ArticleService;
+import com.daxie.daxie_api.dao.ReplyMapper;
+import com.daxie.daxie_api.model.Reply;
+import com.daxie.daxie_api.service.ReplyService;
 import com.daxie.daxie_api.core.AbstractService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,8 +15,8 @@ import javax.annotation.Resource;
  */
 @Service
 @Transactional
-public class ArticleServiceImpl extends AbstractService<Article> implements ArticleService {
+public class ReplyServiceImpl extends AbstractService<Reply> implements ReplyService {
     @Resource
-    private ArticleMapper articleMapper;
+    private ReplyMapper replyMapper;
 
 }

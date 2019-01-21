@@ -18,7 +18,7 @@ public class Article {
     @Column(name = "readCount")
     private Integer readcount;
 
-    private Integer incognito;//是否匿名  1匿名  0不匿名
+    private Integer incognito;
 
     @Column(name = "likeCount")
     private Integer likecount;
@@ -26,7 +26,7 @@ public class Article {
     private String tag;
 
     @Column(name = "sortId")
-    private Integer sortid;
+    private String sortid;
 
     @Column(name = "createTime")
     private String createtime;
@@ -151,14 +151,14 @@ public class Article {
     /**
      * @return sortId
      */
-    public Integer getSortid() {
+    public String getSortid() {
         return sortid;
     }
 
     /**
      * @param sortid
      */
-    public void setSortid(Integer sortid) {
+    public void setSortid(String sortid) {
         this.sortid = sortid;
     }
 

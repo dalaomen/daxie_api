@@ -19,15 +19,36 @@ public class UUIDS {
         int number = (int)(Math.random()*999);
         return YY + "" + MM + "" + DD + "" + HH + "" + mm + "" + SS + "" + MI + "" + number;
     }
-
     public static String getDateTime(){
         Calendar Cld = Calendar.getInstance();
         int YY = Cld.get(Calendar.YEAR) ;
         int MM = Cld.get(Calendar.MONTH)+1;
+        System.out.println(MM);
+        String  NMM="";
+        if(MM<10){
+        NMM="0"+MM;
+        }
+        System.out.println(NMM);
         int DD = Cld.get(Calendar.DATE);
+        String  NDD="";
+        if(DD<10){
+            NDD="0"+DD;
+        }
         int HH = Cld.get(Calendar.HOUR_OF_DAY);
+        String  NHH="";
+        if(DD<10){
+            NHH="0"+HH;
+        }
         int mm = Cld.get(Calendar.MINUTE);
+        String  Nmm="";
+        if(DD<10){
+            Nmm="0"+mm;
+        }
         int SS = Cld.get(Calendar.SECOND);
-        return YY + "" + MM + "" + DD + "" + HH + "" + mm + "" + SS;
+        String  NSS="";
+        if(SS<10){
+            NSS="0"+SS;
+        }
+        return YY + "" + NMM + "" + NDD + "" + NHH + "" + Nmm + "" + NSS;
     }
 }
