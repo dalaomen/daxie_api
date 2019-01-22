@@ -13,7 +13,7 @@ public class Comments {
     private String userid;
 
     @Column(name = "forId")
-    private Integer forid;
+    private String forid;
 
     @Column(name = "createTime")
     private String createtime;
@@ -63,14 +63,14 @@ public class Comments {
     /**
      * @return forId
      */
-    public Integer getForid() {
+    public String getForid() {
         return forid;
     }
 
     /**
      * @param forid
      */
-    public void setForid(Integer forid) {
+    public void setForid(String forid) {
         this.forid = forid;
     }
 

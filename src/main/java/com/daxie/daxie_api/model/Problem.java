@@ -12,17 +12,12 @@ public class Problem {
 
     private String title;
 
-    private String content;
-
     private String tag;
 
     private Integer incognito;
 
     @Column(name = "sortId")
     private Integer sortid;
-
-    @Column(name = "userId")
-    private String userid;
 
     @Column(name = "replyCount")
     private Integer replycount;
@@ -32,6 +27,20 @@ public class Problem {
 
     @Column(name = "createTime")
     private String createtime;
+
+    @Column(name = "userId")
+    private String userid;
+
+    @Column(name = "userName")
+    private String username;
+
+    @Column(name = "userImage")
+    private String userimage;
+
+    @Column(name = "userSignature")
+    private String usersignature;
+
+    private String content;
 
     /**
      * @return id
@@ -73,20 +82,6 @@ public class Problem {
      */
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    /**
-     * @return content
-     */
-    public String getContent() {
-        return content;
-    }
-
-    /**
-     * @param content
-     */
-    public void setContent(String content) {
-        this.content = content;
     }
 
     /**
@@ -132,20 +127,6 @@ public class Problem {
     }
 
     /**
-     * @return userId
-     */
-    public String getUserid() {
-        return userid;
-    }
-
-    /**
-     * @param userid
-     */
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    /**
      * @return replyCount
      */
     public Integer getReplycount() {
@@ -185,5 +166,75 @@ public class Problem {
      */
     public void setCreatetime(String createtime) {
         this.createtime = createtime;
+    }
+
+    /**
+     * @return userId
+     */
+    public String getUserid() {
+        return userid;
+    }
+
+    /**
+     * @param userid
+     */
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    /**
+     * @return userName
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return userImage
+     */
+    public String getUserimage() {
+        return userimage;
+    }
+
+    /**
+     * @param userimage
+     */
+    public void setUserimage(String userimage) {
+        this.userimage = userimage;
+    }
+
+    /**
+     * @return userSignature
+     */
+    public String getUsersignature() {
+        return usersignature;
+    }
+
+    /**
+     * @param usersignature
+     */
+    public void setUsersignature(String usersignature) {
+        this.usersignature = usersignature;
+    }
+
+    /**
+     * @return content
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * @param content
+     */
+    public void setContent(String content) {
+        this.content = content;
     }
 }

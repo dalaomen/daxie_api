@@ -26,28 +26,38 @@ public class UUIDS {
         System.out.println(MM);
         String  NMM="";
         if(MM<10){
-        NMM="0"+MM;
+            NMM="0"+MM;
+        }else{
+            NMM="" +MM;
         }
         System.out.println(NMM);
         int DD = Cld.get(Calendar.DATE);
         String  NDD="";
         if(DD<10){
             NDD="0"+DD;
+        }else{
+            NDD=""+DD;
         }
         int HH = Cld.get(Calendar.HOUR_OF_DAY);
         String  NHH="";
         if(DD<10){
             NHH="0"+HH;
+        }else{
+            NHH=""+HH;
         }
         int mm = Cld.get(Calendar.MINUTE);
         String  Nmm="";
         if(DD<10){
             Nmm="0"+mm;
+        }else{
+            Nmm=""+mm;
         }
         int SS = Cld.get(Calendar.SECOND);
         String  NSS="";
         if(SS<10){
             NSS="0"+SS;
+        }else{
+            NSS=""+SS;
         }
         return YY + "" + NMM + "" + NDD + "" + NHH + "" + Nmm + "" + NSS;
     }

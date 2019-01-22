@@ -2,6 +2,7 @@ package com.daxie.daxie_api.controller;
 import com.daxie.daxie_api.core.Result;
 import com.daxie.daxie_api.core.ResultGenerator;
 import com.daxie.daxie_api.core.UUIDS;
+import com.daxie.daxie_api.model.Comments;
 import com.daxie.daxie_api.model.Reply;
 import com.daxie.daxie_api.service.ReplyService;
 import com.github.pagehelper.PageHelper;
@@ -10,13 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import tk.mybatis.mapper.entity.Condition;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by 代码生成器 on 2019/01/21.
-*/
+ * Created by 代码生成器 on 2019/01/22.
+ */
 @RestController
 @RequestMapping("/reply")
 public class ReplyController {
@@ -27,10 +29,18 @@ public class ReplyController {
     public Result add(Reply reply) {
         reply.setReplyid("r"+ UUIDS.getDateUUID());
         reply.setCreatetime(UUIDS.getDateTime());
+        System.out.println(UUIDS.getDateTime());
         replyService.save(reply);
         return ResultGenerator.genSuccessResult();
     }
-
+    @PostMapping("/getReply")
+    public Result getReply(@RequestParam String  problemid) {
+        Condition condition = new Condition(Reply.class);
+        condition.createCriteria().andCondition("problemid ="+"'"+problemid+"'");
+        condition.setOrderByClause("createtime desc");
+        List<Reply> list=replyService.findByCondition(condition);
+        return ResultGenerator.genSuccessResult(list);
+    }
     @PostMapping("/delete")
     public Result delete(@RequestParam Integer id) {
         replyService.deleteById(id);

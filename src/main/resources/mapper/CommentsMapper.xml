@@ -8,7 +8,7 @@
     <id column="commentId" jdbcType="INTEGER" property="commentid" />
     <result column="comment" jdbcType="VARCHAR" property="comment" />
     <result column="userId" jdbcType="VARCHAR" property="userid" />
-    <result column="forId" jdbcType="INTEGER" property="forid" />
+    <result column="forId" jdbcType="VARCHAR" property="forid" />
     <result column="createTime" jdbcType="VARCHAR" property="createtime" />
   </resultMap>
 </mapper>

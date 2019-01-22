@@ -7,9 +7,14 @@
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="replyId" jdbcType="VARCHAR" property="replyid" />
-    <result column="userId" jdbcType="VARCHAR" property="userid" />
     <result column="createTime" jdbcType="VARCHAR" property="createtime" />
     <result column="likeCount" jdbcType="INTEGER" property="likecount" />
+    <result column="incognito" jdbcType="INTEGER" property="incognito" />
+    <result column="problemId" jdbcType="VARCHAR" property="problemid" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="userImage" jdbcType="VARCHAR" property="userimage" />
+    <result column="userSignature" jdbcType="VARCHAR" property="usersignature" />
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
 </mapper>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.daxie.daxie_api.dao.ForumUserMapper">
-  <resultMap id="BaseResultMap" type="com.daxie.daxie_api.model.ForumUser">
+<mapper namespace="com.daxie.daxie_api.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.daxie.daxie_api.model.User">
     <!--
       WARNING - @mbg.generated
     -->
@@ -18,5 +18,7 @@
     <result column="createDate" jdbcType="VARCHAR" property="createdate" />
     <result column="lastDate" jdbcType="VARCHAR" property="lastdate" />
     <result column="isStat" jdbcType="INTEGER" property="isstat" />
+    <result column="userSignature" jdbcType="VARCHAR" property="usersignature" />
+    <result column="userImage" jdbcType="VARCHAR" property="userimage" />
   </resultMap>
 </mapper>

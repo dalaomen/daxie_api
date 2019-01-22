@@ -30,11 +30,11 @@ public class CommentsController {
         commentsService.save(comments);
         return ResultGenerator.genSuccessResult();
     }
-
+    //查看评论列表
     @PostMapping("/getCommentList")
     public Result getCommentList(String forid) {
         Condition condition = new Condition(Comments.class);
-        condition.createCriteria().andCondition("forid ="+forid);
+        condition.createCriteria().andCondition("forid ="+"'"+forid+"'");
         condition.setOrderByClause("createtime desc");
         List<Comments> list=commentsService.findByCondition(condition);
         return ResultGenerator.genSuccessResult(list);

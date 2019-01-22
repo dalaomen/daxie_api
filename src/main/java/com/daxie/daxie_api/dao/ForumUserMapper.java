@@ -1,7 +1,0 @@
-package com.daxie.daxie_api.dao;
-
-import com.daxie.daxie_api.core.Mapper;
-import com.daxie.daxie_api.model.ForumUser;
-
-public interface ForumUserMapper extends Mapper<ForumUser> {
-}
