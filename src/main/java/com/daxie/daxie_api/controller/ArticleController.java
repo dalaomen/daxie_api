@@ -15,8 +15,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by 代码生成器 on 2019/01/21.
-*/
+ * Created by 代码生成器 on 2019/01/21.
+ */
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
@@ -40,6 +40,7 @@ public class ArticleController {
 
     @PostMapping("/update")
     public Result update(Article article) {
+        article.setLikecount( article.getLikecount()+1);
         articleService.update(article);
         return ResultGenerator.genSuccessResult();
     }

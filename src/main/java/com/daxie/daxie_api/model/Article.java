@@ -20,9 +20,6 @@ public class Article {
 
     private Integer incognito;
 
-    @Column(name = "likeCount")
-    private Integer likecount;
-
     private String tag;
 
     @Column(name = "sortId")
@@ -34,7 +31,13 @@ public class Article {
     @Column(name = "updateTime")
     private String updatetime;
 
+    @Column(name = "likeCount")
+    private Integer likecount;
+
     private String content;
+
+    @Column(name = "likeId")
+    private String likeid;
 
     /**
      * @return id
@@ -121,20 +124,6 @@ public class Article {
     }
 
     /**
-     * @return likeCount
-     */
-    public Integer getLikecount() {
-        return likecount;
-    }
-
-    /**
-     * @param likecount
-     */
-    public void setLikecount(Integer likecount) {
-        this.likecount = likecount;
-    }
-
-    /**
      * @return tag
      */
     public String getTag() {
@@ -191,6 +180,20 @@ public class Article {
     }
 
     /**
+     * @return likeCount
+     */
+    public Integer getLikecount() {
+        return likecount;
+    }
+
+    /**
+     * @param likecount
+     */
+    public void setLikecount(Integer likecount) {
+        this.likecount = likecount;
+    }
+
+    /**
      * @return content
      */
     public String getContent() {
@@ -202,5 +205,19 @@ public class Article {
      */
     public void setContent(String content) {
         this.content = content;
+    }
+
+    /**
+     * @return likeId
+     */
+    public String getLikeid() {
+        return likeid;
+    }
+
+    /**
+     * @param likeid
+     */
+    public void setLikeid(String likeid) {
+        this.likeid = likeid;
     }
 }
