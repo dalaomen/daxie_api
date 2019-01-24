@@ -18,6 +18,21 @@ public class Comments {
     @Column(name = "createTime")
     private String createtime;
 
+    @Column(name = "userName")
+    private String username;
+
+    @Column(name = "userImage")
+    private String userimage;
+
+    @Column(name = "userSignature")
+    private String usersignature;
+
+    @Column(name = "likeCount")
+    private Integer likecount;
+
+    @Column(name = "likeId")
+    private String likeid;
+
     /**
      * @return commentId
      */
@@ -86,5 +101,75 @@ public class Comments {
      */
     public void setCreatetime(String createtime) {
         this.createtime = createtime;
+    }
+
+    /**
+     * @return userName
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return userImage
+     */
+    public String getUserimage() {
+        return userimage;
+    }
+
+    /**
+     * @param userimage
+     */
+    public void setUserimage(String userimage) {
+        this.userimage = userimage;
+    }
+
+    /**
+     * @return userSignature
+     */
+    public String getUsersignature() {
+        return usersignature;
+    }
+
+    /**
+     * @param usersignature
+     */
+    public void setUsersignature(String usersignature) {
+        this.usersignature = usersignature;
+    }
+
+    /**
+     * @return likeCount
+     */
+    public Integer getLikecount() {
+        return likecount;
+    }
+
+    /**
+     * @param likecount
+     */
+    public void setLikecount(Integer likecount) {
+        this.likecount = likecount;
+    }
+
+    /**
+     * @return likeId
+     */
+    public String getLikeid() {
+        return likeid;
+    }
+
+    /**
+     * @param likeid
+     */
+    public void setLikeid(String likeid) {
+        this.likeid = likeid;
     }
 }

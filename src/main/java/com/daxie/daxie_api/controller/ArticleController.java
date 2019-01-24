@@ -40,7 +40,6 @@ public class ArticleController {
 
     @PostMapping("/update")
     public Result update(Article article) {
-        article.setLikecount( article.getLikecount()+1);
         articleService.update(article);
         return ResultGenerator.genSuccessResult();
     }
