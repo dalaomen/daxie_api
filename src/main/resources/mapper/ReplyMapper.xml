@@ -16,5 +16,6 @@
     <result column="userImage" jdbcType="VARCHAR" property="userimage" />
     <result column="userSignature" jdbcType="VARCHAR" property="usersignature" />
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="likeId" jdbcType="LONGVARCHAR" property="likeid" />
   </resultMap>
 </mapper>

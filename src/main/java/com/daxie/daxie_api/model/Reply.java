@@ -35,6 +35,11 @@ public class Reply {
 
     private String content;
 
+
+    @Column(name = "likeId")
+    private String likeid;
+
+
     /**
      * @return id
      */
@@ -187,5 +192,13 @@ public class Reply {
      */
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getLikeid() {
+        return likeid;
+    }
+
+    public void setLikeid(String likeid) {
+        this.likeid = likeid;
     }
 }

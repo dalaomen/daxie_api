@@ -1,4 +1,7 @@
 package com.daxie.daxie_api.controller;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.daxie.daxie_api.configurer.PassToken;
 import com.daxie.daxie_api.core.Code;
 import com.daxie.daxie_api.core.Result;
 import com.daxie.daxie_api.core.ResultGenerator;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -61,6 +65,7 @@ public class UserController {
         }
         return ResultGenerator.genSuccessResult(code);
     }
+    @PassToken
     @PostMapping("/login")
     public Result login(User User) {
         User u =UserService.findBy("username",User.getUsername());
@@ -69,6 +74,12 @@ public class UserController {
         }else if(u.getPassword()==User.getPassword() || u.getPassword().equals(User.getPassword())){
             u.setLastdate(UUIDS.getDateTime());
             UserService.update(u);
+            String token="";
+            token= JWT.create().withAudience(u.getUserid())// 将 user id 保存到 token 里面
+                    .sign(Algorithm.HMAC256(u.getPassword()));// 以 password 作为 token 的密钥
+            ArrayList list=new ArrayList();
+            list.add(u);
+            list.add(token);
             return ResultGenerator.genSuccessResult(u);
         }else{
             return ResultGenerator.genFailResult("密码不正确");
