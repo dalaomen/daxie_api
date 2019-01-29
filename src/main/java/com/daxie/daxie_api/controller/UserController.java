@@ -14,9 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -85,6 +87,37 @@ public class UserController {
             return ResultGenerator.genFailResult("密码不正确");
         }
     }
+
+    @ResponseBody
+    @PostMapping(value = "/saveImage")
+    public Result saveImage(MultipartFile file){
+        //文件上传
+        if (!file.isEmpty()) {
+            try {
+                //图片命名
+                String newCompanyImageName = "newPIC";
+                String newCompanyImagepath = "D:\\"+newCompanyImageName;
+                File newFile = new File(newCompanyImagepath);
+                if (!newFile.exists()) {
+                    newFile.createNewFile();
+                }
+                BufferedOutputStream out = new BufferedOutputStream(
+                        new FileOutputStream(newFile));
+                out.write(file.getBytes());
+                out.flush();
+                out.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                return ResultGenerator.genFailResult("图片上传失败！1");
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResultGenerator.genFailResult("图片上传失败！2");
+            }
+        }
+        return ResultGenerator.genFailResult("图片上传失败！3");
+
+    }
+
     @PostMapping("/add")
     public Result add(User User) {
         UserService.save(User);
