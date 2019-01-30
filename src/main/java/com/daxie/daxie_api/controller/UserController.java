@@ -89,23 +89,30 @@ public class UserController {
     }
 
     @ResponseBody
-    @PostMapping(value = "/saveImage")
-    public Result saveImage(MultipartFile file){
+    @PostMapping(value = "/uploadIamae")
+    public Result uploadIamae(MultipartFile img,User user){
         //文件上传
-        if (!file.isEmpty()) {
+        System.out.println(user.getUsername());
+        if(img==null){
+            return ResultGenerator.genFailResult("图片上传失败！0");
+        }
+        if (!img.isEmpty()) {
             try {
                 //图片命名
-                String newCompanyImageName = "newPIC";
-                String newCompanyImagepath = "D:\\"+newCompanyImageName;
+                String newCompanyImageName = "tx"+user.getUserid()+".jpg";
+                //user.setUserimage();
+                String newCompanyImagepath = "D:\\image\\"+newCompanyImageName;
                 File newFile = new File(newCompanyImagepath);
+                System.out.println(newCompanyImagepath);
                 if (!newFile.exists()) {
                     newFile.createNewFile();
                 }
                 BufferedOutputStream out = new BufferedOutputStream(
                         new FileOutputStream(newFile));
-                out.write(file.getBytes());
+                out.write(img.getBytes());
                 out.flush();
                 out.close();
+                user.setUserimage(newCompanyImagepath);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 return ResultGenerator.genFailResult("图片上传失败！1");
@@ -114,7 +121,8 @@ public class UserController {
                 return ResultGenerator.genFailResult("图片上传失败！2");
             }
         }
-        return ResultGenerator.genFailResult("图片上传失败！3");
+
+        return ResultGenerator.genSuccessResult("头像上传成功！");
 
     }
 
