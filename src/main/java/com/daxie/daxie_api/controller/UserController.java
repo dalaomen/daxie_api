@@ -113,6 +113,7 @@ public class UserController {
                 out.flush();
                 out.close();
                 user.setUserimage(newCompanyImagepath);
+                UserService.update(user);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 return ResultGenerator.genFailResult("图片上传失败！1");
