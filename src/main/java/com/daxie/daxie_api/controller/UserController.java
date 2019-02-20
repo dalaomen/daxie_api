@@ -2,10 +2,7 @@ package com.daxie.daxie_api.controller;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.daxie.daxie_api.configurer.PassToken;
-import com.daxie.daxie_api.core.Code;
-import com.daxie.daxie_api.core.Result;
-import com.daxie.daxie_api.core.ResultGenerator;
-import com.daxie.daxie_api.core.UUIDS;
+import com.daxie.daxie_api.core.*;
 import com.daxie.daxie_api.model.User;
 import com.daxie.daxie_api.service.UserService;
 import com.github.pagehelper.PageHelper;
@@ -93,38 +90,36 @@ public class UserController {
     public Result uploadIamae(MultipartFile img,User user){
         //文件上传
         System.out.println(user.getUsername());
+        QiniuCloudUtil qiniuCloudUtil = new QiniuCloudUtil();
         if(img==null){
             return ResultGenerator.genFailResult("图片上传失败！0");
         }
         if (!img.isEmpty()) {
+            String newImageName;
             try {
                 //图片命名
-                String newCompanyImageName = "tx"+user.getUserid()+".jpg";
+                newImageName = "tx"+user.getUserid()+".jpg";
                 //user.setUserimage();
-                String newCompanyImagepath = "D:\\image\\"+newCompanyImageName;
+                String newCompanyImagepath = "D:\\image\\"+newImageName;
                 File newFile = new File(newCompanyImagepath);
                 System.out.println(newCompanyImagepath);
                 if (!newFile.exists()) {
                     newFile.createNewFile();
                 }
-                BufferedOutputStream out = new BufferedOutputStream(
-                        new FileOutputStream(newFile));
-                out.write(img.getBytes());
-                out.flush();
-                out.close();
-                user.setUserimage(newCompanyImagepath);
+                //BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(newFile));
+                //out.write(img.getBytes());
+                //out.flush();
+                //out.close();
+                String url = qiniuCloudUtil.put64image(img.getBytes(), newImageName);
+                user.setUserimage("http://"+url);
                 UserService.update(user);
-            } catch (FileNotFoundException e) {
+                return ResultGenerator.genSuccessResult("头像上传成功！");
+            } catch (Exception e) {
                 e.printStackTrace();
                 return ResultGenerator.genFailResult("图片上传失败！1");
-            } catch (IOException e) {
-                e.printStackTrace();
-                return ResultGenerator.genFailResult("图片上传失败！2");
             }
         }
-
-        return ResultGenerator.genSuccessResult("头像上传成功！");
-
+        return ResultGenerator.genFailResult("图片上传失败！1");
     }
 
     @PostMapping("/add")
