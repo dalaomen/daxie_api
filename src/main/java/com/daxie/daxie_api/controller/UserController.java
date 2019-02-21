@@ -19,6 +19,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 
 /**
  * Created by 代码生成器 on 2019/01/19.
@@ -86,8 +87,8 @@ public class UserController {
     }
 
     @ResponseBody
-    @PostMapping(value = "/uploadIamae")
-    public Result uploadIamae(MultipartFile img,User user){
+    @PostMapping(value = "/uploadImage")
+    public Result uploadImage(MultipartFile img,User user){
         //文件上传
         System.out.println(user.getUsername());
         QiniuCloudUtil qiniuCloudUtil = new QiniuCloudUtil();
@@ -100,20 +101,17 @@ public class UserController {
                 //图片命名
                 newImageName = "tx"+user.getUserid()+".jpg";
                 //user.setUserimage();
-                String newCompanyImagepath = "D:\\image\\"+newImageName;
-                File newFile = new File(newCompanyImagepath);
-                System.out.println(newCompanyImagepath);
-                if (!newFile.exists()) {
-                    newFile.createNewFile();
-                }
                 //BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(newFile));
                 //out.write(img.getBytes());
                 //out.flush();
                 //out.close();
                 String url = qiniuCloudUtil.put64image(img.getBytes(), newImageName);
-                user.setUserimage("http://"+url);
+                int r= (int)(Math.random() * 10000) + 1;
+                String newUrl="http://"+url+"?v="+r;
+                System.out.println(r);
+                user.setUserimage(newUrl);
                 UserService.update(user);
-                return ResultGenerator.genSuccessResult("头像上传成功！");
+                return ResultGenerator.genSuccessResult(newUrl);
             } catch (Exception e) {
                 e.printStackTrace();
                 return ResultGenerator.genFailResult("图片上传失败！1");

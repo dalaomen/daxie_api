@@ -3,7 +3,6 @@ package com.daxie.daxie_api.core;
 import com.google.gson.Gson;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
-import com.qiniu.http.Response;
 import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
@@ -15,6 +14,7 @@ import com.qiniu.util.UrlSafeBase64;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -51,7 +52,7 @@ public class QiniuCloudUtil {
 
     private static final String style = "自定义的图片样式";
     public String getUpToken() {
-        return auth.uploadToken(bucketname, null, 3600, new StringMap().put("insertOnly", 1));
+        return auth.uploadToken(bucketname, null, 3600, new StringMap().put("insertOnly", 0));
     }
     //base64方式上传
     public String put64image(byte[] base64, String key) throws Exception{
@@ -66,8 +67,9 @@ public class QiniuCloudUtil {
                 .addHeader("Authorization", "UpToken " + getUpToken())
                 .post(rb).build();
         //System.out.println(request.headers());
+
         OkHttpClient client = new OkHttpClient();
-        okhttp3.Response response = client.newCall(request).execute();
+        Response response = client.newCall(request).execute();
         System.out.println(response);
         //如果不需要添加图片样式，使用以下方式
         //return DOMAIN + key;

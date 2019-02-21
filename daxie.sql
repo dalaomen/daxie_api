@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2019-01-29 16:50:49
+Date: 2019-02-21 16:09:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -241,7 +241,7 @@ CREATE TABLE `user` (
   `lastDate` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
   `isStat` int(1) NOT NULL,
   `userSignature` varchar(30) DEFAULT NULL,
-  `userImage` varchar(20) DEFAULT NULL,
+  `userImage` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
@@ -249,7 +249,7 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('15', '2019119115424797108', '1234', '3123', '56415@541.casd', null, null, null, null, null, '2019119115424', null, '0', null, null);
-INSERT INTO `user` VALUES ('16', '2019119115750454', '123', '123', '123@15.cas', null, null, null, null, null, '201911911575', '20190128152951', '0', null, null);
-INSERT INTO `user` VALUES ('18', '2019119121031749120', '1321', '123', '123@15.cad', null, null, null, null, null, '2019119121031', null, '0', null, null);
+INSERT INTO `user` VALUES ('16', '1', '123', '123', '123@15.cas', 'null', 'null', 'null', 'null', 'null', '201911911575', '20190221144612', '0', 'null', 'http://pn7mfwsqh.bkt.clouddn.com/tx1.jpg?v=67');
+INSERT INTO `user` VALUES ('18', '5512', '1321', '123', '123@15.cad', 'null', 'null', 'null', 'null', 'null', '2019119121031', '20190221114317', '0', 'null', 'http://pn7mfwsqh.bkt.clouddn.com/tx5512.jpg');
 INSERT INTO `user` VALUES ('19', '2019119151937156487', '1214895040', 'alwaysacc', '1214895040@qq.com', null, null, null, null, null, '2019119151937', null, '0', null, null);
 INSERT INTO `user` VALUES ('20', '2019122165355530939', 'alwaysacc', 'alwaysacc', 'alwaysacc@163.com', null, null, null, null, null, '20190122165355', '2019012911523', '0', null, null);
