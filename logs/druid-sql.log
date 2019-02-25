@@ -1,0 +1,38 @@
+[2019-02-25 16:06:41] DEBUG 134 statementLog - {conn-10005, pstmt-20000} created. SELECT count(0) FROM sort
+[2019-02-25 16:06:41] DEBUG 134 statementLog - {conn-10005, pstmt-20000} Parameters : []
+[2019-02-25 16:06:41] DEBUG 134 statementLog - {conn-10005, pstmt-20000} Types : []
+[2019-02-25 16:06:41] DEBUG 134 statementLog - {conn-10005, pstmt-20000} executed. 4.541524 millis. SELECT count(0) FROM sort
+[2019-02-25 16:06:41] DEBUG 134 statementLog - {conn-10005, pstmt-20000} clearParameters. 
+[2019-02-25 16:06:41] DEBUG 134 statementLog - {conn-10005, pstmt-20001} created. SELECT id,sortId,sortName,createDate,createForUser,boardUserId  FROM sort limit ?,?
+[2019-02-25 16:06:41] DEBUG 134 statementLog - {conn-10005, pstmt-20001} Parameters : [0, 10]
+[2019-02-25 16:06:41] DEBUG 134 statementLog - {conn-10005, pstmt-20001} Types : [INTEGER, INTEGER]
+[2019-02-25 16:06:41] DEBUG 134 statementLog - {conn-10005, pstmt-20001} executed. 1.701451 millis. SELECT id,sortId,sortName,createDate,createForUser,boardUserId  FROM sort limit ?,?
+[2019-02-25 16:06:41] DEBUG 134 statementLog - {conn-10005, pstmt-20001} clearParameters. 
+[2019-02-25 16:06:44] DEBUG 134 statementLog - {conn-10005, pstmt-20002} created. SELECT count(0) FROM problem
+[2019-02-25 16:06:44] DEBUG 134 statementLog - {conn-10005, pstmt-20002} Parameters : []
+[2019-02-25 16:06:44] DEBUG 134 statementLog - {conn-10005, pstmt-20002} Types : []
+[2019-02-25 16:06:44] DEBUG 134 statementLog - {conn-10005, pstmt-20002} executed. 3.481403 millis. SELECT count(0) FROM problem
+[2019-02-25 16:06:44] DEBUG 134 statementLog - {conn-10005, pstmt-20002} clearParameters. 
+[2019-02-25 16:06:44] DEBUG 134 statementLog - {conn-10005, pstmt-20003} created. SELECT id,problemId,title,tag,incognito,sortId,replyCount,followCount,createTime,userId,userName,userImage,userSignature,content  FROM problem limit ?,?
+[2019-02-25 16:06:44] DEBUG 134 statementLog - {conn-10005, pstmt-20003} Parameters : [0, 10]
+[2019-02-25 16:06:44] DEBUG 134 statementLog - {conn-10005, pstmt-20003} Types : [INTEGER, INTEGER]
+[2019-02-25 16:06:44] DEBUG 134 statementLog - {conn-10005, pstmt-20003} executed. 1.908629 millis. SELECT id,problemId,title,tag,incognito,sortId,replyCount,followCount,createTime,userId,userName,userImage,userSignature,content  FROM problem limit ?,?
+[2019-02-25 16:06:44] DEBUG 134 statementLog - {conn-10005, pstmt-20003} clearParameters. 
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10005, pstmt-20000} Parameters : []
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10005, pstmt-20000} Types : []
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10004, pstmt-20004} created. SELECT count(0) FROM article
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10004, pstmt-20004} Parameters : []
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10005, pstmt-20000} executed. 1.019164 millis. SELECT count(0) FROM sort
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10004, pstmt-20004} Types : []
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10005, pstmt-20000} clearParameters. 
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10005, pstmt-20001} Parameters : [0, 10]
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10005, pstmt-20001} Types : [INTEGER, INTEGER]
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10005, pstmt-20001} executed. 0.776489 millis. SELECT id,sortId,sortName,createDate,createForUser,boardUserId  FROM sort limit ?,?
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10004, pstmt-20004} executed. 3.276274 millis. SELECT count(0) FROM article
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10004, pstmt-20004} clearParameters. 
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10005, pstmt-20001} clearParameters. 
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10004, pstmt-20005} created. SELECT id,articleId,title,userId,readCount,incognito,tag,sortId,createTime,updateTime,likeCount,content,likeId  FROM article limit ?,?
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10004, pstmt-20005} Parameters : [0, 10]
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10004, pstmt-20005} Types : [INTEGER, INTEGER]
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10004, pstmt-20005} executed. 1.775175 millis. SELECT id,articleId,title,userId,readCount,incognito,tag,sortId,createTime,updateTime,likeCount,content,likeId  FROM article limit ?,?
+[2019-02-25 16:06:45] DEBUG 134 statementLog - {conn-10004, pstmt-20005} clearParameters. 
