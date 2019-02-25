@@ -4,7 +4,7 @@
 
         <Console name="Console" target="SYSTEM_OUT">
             <!--只接受程序中DEBUG级别的日志进行处理-->
-            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%d{yyyy HH:mm:ss.SSS}] -%5level [%t]  %-40.40logger{39} %L %M - %msg%xEx%n"/>
         </Console>
 
