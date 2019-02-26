@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: prod
   mvc:
     throw-exception-if-no-handler-found: true
   http:
@@ -30,5 +30,5 @@ server:
   error:
     whitelabel:
       enabled: false
-logging:
-  config: classpath:log4j.xml
+  port:
+

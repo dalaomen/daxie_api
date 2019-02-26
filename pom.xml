@@ -41,19 +41,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- Apache工具组件 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-        </dependency>
         <!--常用库依赖-->
         <dependency>
             <groupId>commons-codec</groupId>
@@ -178,6 +165,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.daxie.daxie_api.Application</mainClass>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -189,7 +179,6 @@
             </plugin>
         </plugins>
     </build>
-
     <repositories>
         <repository>
             <id>aliyun-repos</id>
@@ -209,5 +198,6 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
 </project>
 
