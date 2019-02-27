@@ -61,12 +61,3 @@ spring:
           result-set-close-after-log-enabled: false
 logging:
   config: classpath:log4j.xml
-server:
-  port: 443
-  ssl:
-    key-store: classpath:www.alwaysacc.club.jks
-    key-store-password: alwaysacc
-    key-password: alwaysacc
-
-http:
-  port: 80

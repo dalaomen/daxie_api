@@ -12,21 +12,6 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
-    @Value("${http.port}")
-    private Integer port;
-
-    @Bean
-    public EmbeddedServletContainerFactory servletContainer() {
-        TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
-        tomcat.addAdditionalTomcatConnectors(createStandardConnector()); // 添加http
-        return tomcat;
-    }
-    // 配置http
-    private Connector createStandardConnector() {
-        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
-        connector.setPort(port);
-        return connector;
-    }
     public static void main(String[] args){
         SpringApplication.run(Application.class, args);
     }
