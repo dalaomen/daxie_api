@@ -17,8 +17,8 @@ spring:
     default-encoding: utf-8
   redis:
     database: 0
-    timeout: 0
-    host: 127.0.0.1
+    timeout: 1000
+    host: 111.230.252.141
     password: 123456
     port: 6379
     pool:
@@ -30,5 +30,5 @@ server:
   error:
     whitelabel:
       enabled: false
-  port:
+  port: 80
 
