@@ -9,7 +9,7 @@ spring:
     # 填写你数据库的url、登录名、密码和数据库名
     url: jdbc:mysql://localhost:3306/daxie?useSSL=false&characterEncoding=utf8
     username: daxie
-    password: wCmhM2PwBrJMzMPm
+    password: xx6BfWFcbRRFdcs5
     druid:
       # 连接池的配置信息
       # 初始化大小，最小，最大
